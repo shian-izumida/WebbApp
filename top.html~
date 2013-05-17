@@ -1,0 +1,19 @@
+<h3>Training DB Webapp</h3>
+<img src="../../icons/logomysql.png" alt='logo' width='85' height='56.6'>
+
+<h3>Search</h3>
+<a href="Wapp.pl?mode=all">all course</a>
+<p>
+<form action="serch_key.pl" method="post">
+	keyword:
+	<input type="hidden" name="request_key" value="$skey">
+	<input type="text" name="key" value="$skey" size="35">
+	<input type="submit" value="送信"><br>
+</form>
+. $skey .
+<form action ="serch_cat.pl" method="post">
+	category:
+	<input type="text" name="cat" size="35">
+	<input type="submit" value="送信"><br>
+</p>
+</form>
