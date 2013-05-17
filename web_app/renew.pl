@@ -29,7 +29,6 @@ my $day_length = &sanitize($q->param('day_length'));
 my $level_id = &sanitize($q->param('level_id'));
 my $topic = &sanitize($q->param('topic'));
 my $category = &sanitize($q->param('category'));
-
 #入力時エラー確認
 if(
 	$course_id !~ /^[a-zA-Z0-9-]{1,20}$/ || 
@@ -59,17 +58,18 @@ my $sql = "update course set ";
    }
    $sql .= "day_length=?,";
    $sql .= "price=?,";
-   $sql .= "level_id=?";
+   $sql .= "level_id=?,";
+   $sql .= "category=?";
    $sql .= "where course_id =?";
  
-
 my $sth = $dbh->prepare($sql);
 	$sth->bind_param(1,$course_title);
 	$sth->bind_param(2,$topic);
 	$sth->bind_param(3,$day_length);
 	$sth->bind_param(4,$price);
 	$sth->bind_param(5,$level_id);
-	$sth->bind_param(6,$course_id);
+	$sth->bind_param(6,$category);
+	$sth->bind_param(7,$course_id);
 
 if(!$sth->execute){
 	print "SQL失敗\n";

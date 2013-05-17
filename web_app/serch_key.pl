@@ -25,7 +25,7 @@ print  <<EOM;
 EOM
 
 if( &_checkKey() != 1){
-	print "printError\n";
+	print "Error\n";
 	return -1;
 }
 
@@ -37,9 +37,6 @@ if($key eq ""){
 	print "</body></html>\n";
 	return -1;
 }
-
-#bind_param用に%つける
-$key = "%$key%";
 
 
 print "<h3>found courses</h3>\n";
@@ -72,7 +69,18 @@ if(!$sth->execute){
 	exit;
 }
 my @rec = $sth->fetchrow_array;
+print "$rec[0]\n";
+if($rec[0] == 1){
+ print qq|<meta http-equiv="Refresh" content="0;
+	URL=course_s.pl?key=$key">\n|;
+	print"</body></html>\n";
+	exit;
+}
+
 print "rows...$rec[0]\n";
+#bind_param用に%つける
+$key = "%$key%";
+
 
 my $sql = "select course_id, course_title, price, level_id, category from course ";
 $sql .= "where course_id like ? or";
