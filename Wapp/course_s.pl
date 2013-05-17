@@ -28,7 +28,7 @@ my $dbh =DBI->connect("DBI:mysql:training_db", "root", "",{
 
 my $sql = "select course_title,";
    $sql .= "topic,";
-   $sql .= "day_length, price, level_id, category from course where course_id = $mode";
+   $sql .= "day_length, price, level_id, category from course where course_id = '$mode'";
 
 my $sth = $dbh->prepare($sql);
 if(!$sth->execute){

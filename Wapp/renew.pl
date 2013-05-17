@@ -118,7 +118,7 @@ print "</html>\n";
 #---------------------
 sub sanitize{
 	my  $html = $_[0];
-	$html =~ s/ //g; #空白を削除
+#	$html =~ s/ //g; #空白を削除
 	$html =~ s/&/&amp/g;
 	$html =~ s/</&lt/g;
 	$html =~ s/>/&gt/g;

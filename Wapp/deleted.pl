@@ -26,7 +26,7 @@ EOM
 my $dbh =DBI->connect("DBI:mysql:training_db", "root", "",{
 		AutoCommit=>0,RaiseError=>1,PrintError=>0}) || die;
 
-my $sql = "delete from course where course_id = $course_id";
+my $sql = "delete from course where course_id = '$course_id'";
 
 my $sth = $dbh->prepare($sql);
 if(!$sth->execute){

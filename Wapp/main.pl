@@ -9,10 +9,10 @@ my $start_time = Time::HiRes::time;
 
 
 #テンプレートファイル(コース作成用)
-my $create_course = "../../html/WA/tmpl/create.html";
+my $create_course = "../html/create.html";
 
 #テンプレートファイル(コース完成後)
-my $created_course = "../../html/WA/tmpl/created.html";
+my $created_course = "../html/created.html";
 
 
 #---------------------
@@ -52,7 +52,7 @@ sub main{
 	my $skey = &create_key();
 print <<EOM;
 <h3>Training DB Webapp</h3>
-<img src="../../icons/logomysql.png" alt='logo' width='85' height='56.6'>
+<img src="../icons/logomysql.png" alt='logo' width='85' height='56.6'>
 
 <h3>Search</h3>
 <a href="main.pl?mode=all">all course</a>
@@ -141,7 +141,7 @@ sub post_data{
 		$day_length !~ /^[1-9][0-9]?$/|| 
 		$price !~ /^\d{1,6}$/ || 
 		$level_id !~ /^[1-5]$/ || 
-		$category !~ /^[a-zA-Z0-9-]{1,20}$/
+		$category !~ /^[a-zA-Z0-9-]{1,40}$/
 		){
 			&validation_error();
 	}
@@ -149,10 +149,9 @@ sub post_data{
 	{
 	#コース挿入
 	&dbh();
-	
 	#重複チェック
 	my $sql = "select count(*) from course ";
-	   $sql .= "where course_id = $course_id";
+	   $sql .= "where course_id = '$course_id'";
 	
 	my $sth = $dbh->prepare($sql);
 	if(!$sth->execute){
@@ -264,7 +263,7 @@ sub dbh{
 #---------------------
 sub sanitize{
 	my  $html = $_[0];
-	$html =~ s/ //g; #スペースを削除
+#	$html =~ s/ //g; #スペースを削除
 	$html =~ s/&/&amp/g;
 	$html =~ s/</&lt/g;
 	$html =~ s/>/&gt/g;
