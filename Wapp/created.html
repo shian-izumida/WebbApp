@@ -1,0 +1,28 @@
+<h3>course created.</h3>
+<a href="../cgi-bin/Wapp.pl?mode=delete">delete this course? ...</a>
+
+<!--data_begin -->
+<p>
+<form action='Wapp.pl'>
+	<table border>
+		<tr><th>course_id</th>
+			<td>$course_id</td></tr>
+		<tr><th>course_title</th>
+			<td><input type="text" name="course_title" value="$course_title" size="20"></td></tr>
+
+		<tr><th>topic</th>
+	     	<td><textarea type="text" name="topic" cols="20" rows="3"></textarea></tr>
+		<tr><th>day_length</th>
+			<td><input type="text" name="day_length" size="20"></td></tr>
+       		<tr><th>price</th>
+	       		<td><input type="text" name="price" size="20"></td></tr>
+		<tr><th>level_id</th>	
+	       		<td><input type="text" name="level_id" size="20"></td></tr>
+       		<tr><th>category</th>
+	       		<td><input type="text" name="category" size="20"></td></tr>
+	</table>
+	<br>
+	<input type="submit" name="post_data" value="送信">
+	</p>
+</form>
+<!-- data_end -->
