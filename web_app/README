@@ -2,6 +2,7 @@
 
 /var/www/cgi-bin/以下に配置
 ・main.pl
+このページから実行
 トップページ、全コース表示、新規コース登録処理
 
 ・delete.pl
