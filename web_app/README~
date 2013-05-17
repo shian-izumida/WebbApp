@@ -1,6 +1,4 @@
 #各ファイルについて
-
-/var/www/cgi-bin/以下に配置
 ・main.pl
 トップページ、全コース表示、新規コース登録処理
 
@@ -22,13 +20,11 @@ keyword検索処理
 ・course_s.pl
 単一表示用コース
 
-/var/www/html/に配置
 ・creat.html
 コース作成フォーム
 
 ・created.html
 コース完成後フォーム
 
-/var/www/icons/に配置
 ・logomysql.png
 トップ画面用ロゴ
